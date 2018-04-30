@@ -36,7 +36,7 @@ import java.util.List;
  */
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHolder> {
     private static final String TAG = "EmployeeAdapter";
-    private List<Datum> items;
+    private List<Datum> items = null;
     private ArrayList<Datum> copyItems;
 
     public EmployeeAdapter(List<Datum> items) {
@@ -145,5 +145,6 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
                 }
             }
         }
+        notifyDataSetChanged();
     }
 }

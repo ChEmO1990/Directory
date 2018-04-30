@@ -8,27 +8,24 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.communitytax.directory.ui.RecyclerViewFragment;
+import com.communitytax.directory.models.Datum;
+import com.communitytax.directory.ui.EmployeeFragment;
+public class MainActivity extends AppCompatActivity implements EmployeeFragment.OnListFragmentInteractionListener {
 
-public class MainActivity extends AppCompatActivity {
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
             FragmentTransaction transaction = null;
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    selectedFragment = new RecyclerViewFragment();
-                    break;
+                    selectedFragment = EmployeeFragment.newInstance();  break;
                 case R.id.navigation_dashboard:
-                    selectedFragment = new RecyclerViewFragment();
-                    break;
+                    selectedFragment  = EmployeeFragment.newInstance(); break;
                 case R.id.navigation_notifications:
-                    selectedFragment = new RecyclerViewFragment();
-                    break;
+                    selectedFragment  = EmployeeFragment.newInstance(); break;
             }
 
             transaction = getFragmentManager().beginTransaction();
@@ -37,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     };
+
+    @Override
+    public void onListFragmentInteraction(Datum item) {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
